@@ -1,0 +1,25 @@
+- name: Upgrade k3s
+  hosts: k3s_master
+  become: true
+  gather_facts: true
+  serial: 1
+
+  roles:
+    - role: download
+
+  tasks:
+    - name: Reboot System
+      ansible.builtin.reboot:
+
+- name: Upgrade k3s
+  hosts: k3s_worker
+  become: true
+  gather_facts: true
+  serial: 1
+
+  roles:
+    - role: download
+
+  tasks:
+    - name: Reboot System
+      ansible.builtin.reboot:
